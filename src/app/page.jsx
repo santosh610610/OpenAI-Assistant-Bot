@@ -13,6 +13,25 @@ function MainComponent() {
   const [theme, setTheme] = React.useState("light");
   const [appName, setAppName] = React.useState("OpenAI Assistant Chatbot");
 
+  React.useEffect(() => {
+    const script = document.createElement('script');
+    script.src = `https://www.googletagmanager.com/gtag/js?id=G-M4FHL4EC6K`;
+    script.async = true;
+    document.head.appendChild(script);
+
+    script.onload = () => {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-M4FHL4EC6K');
+    };
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
+
+
   const themes = {
     light: {
       bg: "bg-gray-100",
